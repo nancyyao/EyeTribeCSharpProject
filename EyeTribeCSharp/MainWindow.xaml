@@ -116,10 +116,13 @@
                 </Grid>
             </Grid>
         </Grid>
+        <DockPanel HorizontalAlignment="Left" Background="Transparent" LastChildFill="False">
+            <TextBlock DockPanel.Dock="Bottom" Name="Receive_Status_Text" MaxWidth="266.67" Text="Receiving Data" FontSize="18" HorizontalAlignment="Center" Visibility="Hidden"/>
+        </DockPanel>
+        <DockPanel HorizontalAlignment="Right" Background="Transparent" LastChildFill="False">
+            <TextBlock DockPanel.Dock="Bottom" Name="Share_Status_Text" MaxWidth="266.67" Text="Sharing Data" FontSize="18" HorizontalAlignment="Center" Visibility="Hidden"/>
+        </DockPanel>
         <Canvas x:Name="canvas_overlay">
-            <!--<Image x:Name="GazePointer" Width="32" Height="32" Visibility="Visible">
-                <Image.Source><BitmapImage DecodePixelWidth="32" UriSource="\Graphics\eye-7-32.png" /></Image.Source>
-            </Image>-->
             <Ellipse x:Name="GazePointer" Width="32" Height="32" Visibility="Visible" >
                 <Ellipse.Fill><ImageBrush ImageSource="Graphics\eye-7-32.png"/></Ellipse.Fill>
             </Ellipse>

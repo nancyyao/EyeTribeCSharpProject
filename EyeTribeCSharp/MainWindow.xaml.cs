@@ -786,6 +786,8 @@ namespace EyeTribeCSharp
                         IPHostEntry ipHostInfo = Dns.GetHostByName(Dns.GetHostName());
                         IPAddress ipAddress = ipHostInfo.AddressList[0];
                         Receive_Text.Text = "Receiver On\nIP:" + ipAddress.ToString();
+                        Receive_Status_Text.Text = "Receiving Data\nIP:" + ipAddress.ToString();
+                        Receive_Status_Text.Visibility = Visibility.Visible;
                         //Receiver_Pop.IsOpen = true;
                         //Receiver_Pop_TextBox.Text = "Please enter your IP address";
                         //Receiver_Pop_TextBox.SelectAll();
@@ -795,7 +797,7 @@ namespace EyeTribeCSharp
                         GazePointer.Visibility = Visibility.Visible;
                         ReceiveGazePointer.Visibility = Visibility.Hidden;
                         Receive_Text.Text = "Receive Off";
-
+                        Receive_Status_Text.Visibility = Visibility.Hidden;
                         //if wrap below???
                         ReceiverIP = "";
                         try
@@ -822,6 +824,8 @@ namespace EyeTribeCSharp
                             Sender_Pop_TextBox.Text = "Please enter other's IP address";
                             Sender_Pop_TextBox.SelectAll();
                         }
+                        Share_Status_Text.Text = "Sharing Data\nIP:" + SenderIP.ToString();
+                        Share_Status_Text.Visibility = Visibility.Visible;
                         communication_started_Sender = false;
                     }
                     else
@@ -829,10 +833,10 @@ namespace EyeTribeCSharp
                         Share_Text.Text = "Share Off";
                         Sender_Pop.IsOpen = false;
                         SenderIP = "";
+                        Share_Status_Text.Visibility = Visibility.Hidden;
                         try
                         {
                             communicateThread_Sender.Abort();
-
                         }
                         catch (Exception e)
                         {
