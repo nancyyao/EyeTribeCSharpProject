@@ -133,100 +133,46 @@
     <Resource Include="Graphics\fishjpg2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Graphics\graphic1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\L1graphic1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\L2graphic1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\L3graphic1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\L4graphic1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\R1graphic1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\R2graphic1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\R3graphic1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\R4graphic1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\BWgraphic1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Graphics\green-eye-7-32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Graphics\graphic2\BWgraphic2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic2\graphic2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic2\L1graphic2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic2\L2graphic2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic2\L3graphic2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic2\L4graphic2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic2\R1graphic2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic2\R2graphic2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic2\R3graphic2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic2\R4graphic2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic3\BWgraphic3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic3\graphic3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic3\L1graphic3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic3\L2graphic3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic3\L3graphic3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic3\L4graphic3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic3\R1graphic3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic3\R2graphic3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic3\R3graphic3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Graphics\graphic3\R4graphic3.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Graphics\microphone-3-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\CaseA\BWgraphic1.png" />
+    <Resource Include="Graphics\CaseA\graphic1.png" />
+    <Resource Include="Graphics\CaseA\L1graphic1.png" />
+    <Resource Include="Graphics\CaseA\L2graphic1.png" />
+    <Resource Include="Graphics\CaseA\L3graphic1.png" />
+    <Resource Include="Graphics\CaseA\L4graphic1.png" />
+    <Resource Include="Graphics\CaseA\R1graphic1.png" />
+    <Resource Include="Graphics\CaseA\R2graphic1.png" />
+    <Resource Include="Graphics\CaseA\R3graphic1.png" />
+    <Resource Include="Graphics\CaseA\R4graphic1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\CaseB\BWgraphic2.png" />
+    <Resource Include="Graphics\CaseB\graphic2.png" />
+    <Resource Include="Graphics\CaseB\L1graphic2.png" />
+    <Resource Include="Graphics\CaseB\L2graphic2.png" />
+    <Resource Include="Graphics\CaseB\L3graphic2.png" />
+    <Resource Include="Graphics\CaseB\L4graphic2.png" />
+    <Resource Include="Graphics\CaseB\R1graphic2.png" />
+    <Resource Include="Graphics\CaseB\R2graphic2.png" />
+    <Resource Include="Graphics\CaseB\R3graphic2.png" />
+    <Resource Include="Graphics\CaseB\R4graphic2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\CaseC\BWgraphic3.png" />
+    <Resource Include="Graphics\CaseC\graphic3.png" />
+    <Resource Include="Graphics\CaseC\L1graphic3.png" />
+    <Resource Include="Graphics\CaseC\L2graphic3.png" />
+    <Resource Include="Graphics\CaseC\L3graphic3.png" />
+    <Resource Include="Graphics\CaseC\L4graphic3.png" />
+    <Resource Include="Graphics\CaseC\R1graphic3.png" />
+    <Resource Include="Graphics\CaseC\R2graphic3.png" />
+    <Resource Include="Graphics\CaseC\R3graphic3.png" />
+    <Resource Include="Graphics\CaseC\R4graphic3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

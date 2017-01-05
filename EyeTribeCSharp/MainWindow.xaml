@@ -129,8 +129,8 @@
             <Ellipse x:Name="AnswerEllipse" Width="100" Height="60" Stroke="Blue" Visibility="Hidden"/>
         </Canvas>
         <Canvas x:Name="track_overlay" Opacity="1">
-            <Ellipse x:Name="GazeSpot" Width="8" Height="8" Fill="Red" Visibility="Hidden" Opacity="0.3"/>
-            <Ellipse x:Name="PrevGazeSpot" Width="8" Height="8" Fill="Red" Visibility="Hidden" Opacity="0.3"/>
+            <Ellipse x:Name="GazeSpot" Width="8" Height="8" Fill="Red" Visibility="Hidden" Opacity="0.4"/>
+            <Ellipse x:Name="PrevGazeSpot" Width="8" Height="8" Fill="Red" Visibility="Hidden" Opacity="0.4"/>
             <Line x:Name="SpotLine" Stroke="red" X1="0" Y1="25" X2="0" Y2="25" Visibility="Hidden"/>
         </Canvas>
         <Canvas x:Name="fish_overlay" Opacity="1">

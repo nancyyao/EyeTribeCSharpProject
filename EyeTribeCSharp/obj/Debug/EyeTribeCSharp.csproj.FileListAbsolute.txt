@@ -16,3 +16,21 @@ c:\users\master\documents\visual studio 2015\Projects\EyeTribeCSharp\EyeTribeCSh
 c:\users\master\documents\visual studio 2015\Projects\EyeTribeCSharp\EyeTribeCSharp\obj\Debug\EyeTribeCSharp.csproj.GenerateResource.Cache
 c:\users\master\documents\visual studio 2015\Projects\EyeTribeCSharp\EyeTribeCSharp\obj\Debug\EyeTribeCSharp.exe
 c:\users\master\documents\visual studio 2015\Projects\EyeTribeCSharp\EyeTribeCSharp\obj\Debug\EyeTribeCSharp.pdb
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\bin\Debug\EyeTribeCSharp.exe.config
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\obj\Debug\EyeTribeCSharp.exe
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\obj\Debug\EyeTribeCSharp.pdb
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\bin\Debug\EyeTribeCSharp.exe
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\bin\Debug\EyeTribeCSharp.pdb
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\bin\Debug\EyeTribe.ClientSdk.dll
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\obj\Debug\EyeTribeCSharp.csprojResolveAssemblyReference.cache
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\obj\Debug\MainWindow.g.cs
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\obj\Debug\App.g.cs
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\obj\Debug\EyeTribeCSharp_MarkupCompile.cache
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\obj\Debug\EyeTribeCSharp_MarkupCompile.lref
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\obj\Debug\MainWindow.baml
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\obj\Debug\EyeTribeCSharp.g.resources
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\obj\Debug\EyeTribeCSharp.Properties.Resources.resources
+C:\Users\Master\Documents\GitHub\EyeTribeCSharpProject\EyeTribeCSharp\obj\Debug\EyeTribeCSharp.csproj.GenerateResource.Cache
