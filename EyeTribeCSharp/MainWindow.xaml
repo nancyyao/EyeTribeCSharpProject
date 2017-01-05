@@ -1,0 +1,141 @@
+﻿<!--
+    * Copyright (c) 2013-present, The Eye Tribe. 
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the LICENSE file in the root directory of this source tree. 
+-->
+<Window x:Class="EyeTribeCSharp.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:EyeTribeCSharp="clr-namespace:EyeTribeCSharp"
+    mc:Ignorable="d"
+    Title="Eye Tribe C# Project" 
+    Width="1200"
+    Height="800"    
+    WindowStartupLocation="CenterScreen" 
+    WindowStyle="None" 
+    WindowState="Maximized">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type EyeTribeCSharp:ImageButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type EyeTribeCSharp:ImageButton}">
+                        <Grid Margin="5,5,5,5">
+                            <Image x:Name="VisibleIcon"
+                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Icon}" 
+                                Stretch="Fill"
+                                Width="100"
+                                Height="100"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="VisibleIcon" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="100" Color="White" ShadowDepth="0" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="VisibleIcon" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="0" Color="White" ShadowDepth="0" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <LinearGradientBrush x:Key="lineargradbrush" StartPoint="0,0" EndPoint="1,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="Transparent" Offset="0"/>
+                <GradientStop Color="Yellow" Offset="1"/>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="semitransbrush" Color="#80f2f264"></SolidColorBrush>
+        
+    </Window.Resources>
+    <Grid x:Name="LayoutRoot">
+        <ScrollViewer x:Name="WebImageScroll" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" HorizontalAlignment="Center">
+            <Image x:Name="WebImage" />
+        </ScrollViewer>
+        <Grid x:Name="GridTop" Margin="0" VerticalAlignment="Top" Height="250">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Rectangle Fill="#CC000000" />
+            <Border BorderBrush="#CC808080" BorderThickness="0,0,0,4" />
+            <Border BorderBrush="#CCA9A9A9" BorderThickness="0,0,0,2" />
+            <Grid Grid.Row="0" MaxWidth="1600" x:Name="GridButtons">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <EyeTribeCSharp:ImageButton FocusVisualStyle="{x:Null}" Grid.Column="0" x:Name="Receive" Icon="Graphics/eye-white-7-120.png" />
+                <EyeTribeCSharp:ImageButton FocusVisualStyle="{x:Null}" Grid.Column="1" x:Name="Share" Icon="Graphics/share-white-4-96.png" />
+                <EyeTribeCSharp:ImageButton FocusVisualStyle="{x:Null}" Grid.Column="2" x:Name="Trace" Icon="Graphics/dots-white-7-96.png" />
+                <EyeTribeCSharp:ImageButton FocusVisualStyle="{x:Null}" Grid.Column="3" x:Name="Highlight" Icon="Graphics/flag-white-4-96.png" />
+                <EyeTribeCSharp:ImageButton FocusVisualStyle="{x:Null}" Grid.Column="4" x:Name="Exit" Icon="Graphics/exit.png" />
+                <EyeTribeCSharp:ImageButton FocusVisualStyle="{x:Null}" Grid.Column="5" x:Name="startrecording" Icon="Graphics/microphone-3-96.png"/>
+            </Grid>
+            <Grid Grid.Row="1" MaxWidth="1600" x:Name="ButtonsStatus" Margin="0,0,0,-46">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" MaxWidth="1600" x:Name="ReceiverStatus">
+                    <TextBlock Name="Receive_Text" MaxWidth="266.67" Text="Receive off" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+                <Grid Grid.Column="1" MaxWidth="1600" x:Name="SenderStatus">
+                    <TextBlock Name="Share_Text" MaxWidth="266.67" Text="Share off" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+                    <Popup x:Name="Sender_Pop" IsOpen="False" Margin="0,0,0,0">
+                        <TextBox  x:Name="Sender_Pop_TextBox" Text="Please enter your IP address" HorizontalAlignment="Stretch"></TextBox>
+                    </Popup>
+                </Grid>
+                <TextBlock Name="Track_Text" Grid.Column="2" MaxWidth="266.67" Text="Track off" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Name="Highlight_Text" Grid.Column="3" MaxWidth="266.67" Text="Highlight off" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Name="Exit_Text" Grid.Column="4" MaxWidth="266.67" ></TextBlock>
+                <Grid Grid.Column="5" MaxWidth="1600" x:Name="DataRecordStatus">
+                    <TextBlock Name="Data_Record_Status_Text" MaxWidth="266.67" Text="Data Record off" FontSize="18" HorizontalAlignment="Center"></TextBlock>
+                    <Popup x:Name="Data_Record_Pop" IsOpen="False" Margin="0,0,0,0">
+                        <TextBox  x:Name="Data_Record_Pop_TextBox" Text="Please enter number on this laptop" HorizontalAlignment="Stretch"></TextBox>
+                    </Popup>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Canvas x:Name="canvas_overlay">
+            <!--<Image x:Name="GazePointer" Width="32" Height="32" Visibility="Visible">
+                <Image.Source><BitmapImage DecodePixelWidth="32" UriSource="\Graphics\eye-7-32.png" /></Image.Source>
+            </Image>-->
+            <Ellipse x:Name="GazePointer" Width="32" Height="32" Visibility="Visible" >
+                <Ellipse.Fill><ImageBrush ImageSource="Graphics\eye-7-32.png"/></Ellipse.Fill>
+            </Ellipse>
+            <Ellipse x:Name="ReceiveGazePointer" Width="32" Height="32" Visibility="Hidden" >
+                <Ellipse.Fill><ImageBrush ImageSource="Graphics\green-eye-7-32.png"/></Ellipse.Fill>
+            </Ellipse>
+            <Ellipse x:Name="AnswerEllipse" Width="100" Height="60" Stroke="Blue" Visibility="Hidden"/>
+        </Canvas>
+        <Canvas x:Name="track_overlay" Opacity="1">
+            <Ellipse x:Name="GazeSpot" Width="8" Height="8" Fill="Red" Visibility="Hidden" Opacity="0.3"/>
+            <Ellipse x:Name="PrevGazeSpot" Width="8" Height="8" Fill="Red" Visibility="Hidden" Opacity="0.3"/>
+            <Line x:Name="SpotLine" Stroke="red" X1="0" Y1="25" X2="0" Y2="25" Visibility="Hidden"/>
+        </Canvas>
+        <Canvas x:Name="fish_overlay" Opacity="1">
+            <Ellipse x:Name="FishCircle" Width="300" Height="200" Stroke="Blue" Visibility="Hidden"/>
+        </Canvas>
+        <TextBox x:Name="TestBox" Opacity="0.0" FontSize="24" Margin="10,250,-10,341" TextWrapping="Wrap" Text="Starting. Please make sure Eye Tracker is calibrated and your eyes are on the screen!"/>
+    </Grid>
+</Window>
