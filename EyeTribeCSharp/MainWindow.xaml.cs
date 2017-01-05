@@ -58,7 +58,7 @@ namespace EyeTribeCSharp
         private DateTime prevTime = System.DateTime.Now;
         private static int listmax = 100;
         private int[] xlist = new int[listmax], ylist = new int[listmax];
-        
+
 
         private Point lastPointDrawn = new Point(0, 0);
 
@@ -83,8 +83,8 @@ namespace EyeTribeCSharp
         private int highlightColumn;
         private double w;
         private double h;
-       // private int pastRow = 0;
-      //  private int pastCol = 0;
+        // private int pastRow = 0;
+        //  private int pastCol = 0;
 
         //switch cases
         private int caseNum = 1;
@@ -269,7 +269,8 @@ namespace EyeTribeCSharp
                     WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/BWgraphic2.png", UriKind.RelativeOrAbsolute));
                 else
                     WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/graphic2.png", UriKind.RelativeOrAbsolute));
-            } else if (e.KeyboardDevice.IsKeyDown(Key.C))
+            }
+            else if (e.KeyboardDevice.IsKeyDown(Key.C))
             {
                 caseNum = 3;
                 if (highlightOn)
@@ -288,7 +289,7 @@ namespace EyeTribeCSharp
             if (e.Key == Key.VolumeDown || e.Key == Key.VolumeUp || e.Key == Key.Escape)
                 Close();
             //else
-                //DoTapUp();
+            //DoTapUp();
         }
 
         private void DoTapDown()
@@ -310,7 +311,8 @@ namespace EyeTribeCSharp
             if (GridTop.Visibility == Visibility.Collapsed)
             {
                 GridTop.Visibility = Visibility.Visible;
-            } else if (GridTop.Visibility == Visibility.Visible)
+            }
+            else if (GridTop.Visibility == Visibility.Visible)
             {
                 DoButtonCheck(System.Windows.Forms.Cursor.Position.X, System.Windows.Forms.Cursor.Position.Y);
                 GridTop.Visibility = Visibility.Collapsed;
@@ -357,7 +359,8 @@ namespace EyeTribeCSharp
                 lastPointUpdate = relativePt;
 
                 currentTime = System.DateTime.Now;
-            } else if (ReceiverOn && x_received>0 && y_received>0)
+            }
+            else if (ReceiverOn && x_received > 0 && y_received > 0)
             {
                 receiveGaze(x_received, y_received);
             }
@@ -370,7 +373,8 @@ namespace EyeTribeCSharp
                     {
                         Point receivedPt = new Point(x_received, y_received);
                         spot(receivedPt);
-                    } else if (!ReceiverOn)
+                    }
+                    else if (!ReceiverOn)
                     {
                         spot(relativePt);
                     }
@@ -389,23 +393,24 @@ namespace EyeTribeCSharp
                     checkRegion(relativePt);
                 }
             };
-            if (GridTop.Visibility == Visibility.Collapsed){ }
+            if (GridTop.Visibility == Visibility.Collapsed) { }
             else
             {
                 //DoButtonCheck(x, y);
             }
         }
         private void checkRegion(Point pt)
-        {  
+        {
             h = WebImage.Height;
-            w = 0.77*WebImage.Width; //width not including answer key section
+            w = 0.77 * WebImage.Width; //width not including answer key section
             //double leftLimit = 675 - WebImage.Width / 2; //fix
             double leftLimit = (Screen.PrimaryScreen.Bounds.Width / 2) - (WebImage.Width / 2);
             double rightLimit = leftLimit + WebImage.Width - 140;
             //rightLimit = leftLimit + (WebImage.Width * 0.77);
-            double section = (rightLimit - leftLimit) / 4;
+            double section = WebImage.Width / 4;// (rightLimit - leftLimit) / 4;
+            double wsection = w / 4; //a fourth of the width of the diagram part
             AnswerEllipse.Visibility = Visibility.Hidden;
-
+            double pad = 40;
             //Check column: far left, left, right, far right
             if (pt.X >= rightLimit || pt.X <= leftLimit) //no region
             {
@@ -417,63 +422,64 @@ namespace EyeTribeCSharp
                 else if (caseNum == 3)
                     WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/BWgraphic3.png", UriKind.RelativeOrAbsolute));
                 #region answerkey
-                if (pt.X >= rightLimit && pt.X <= (leftLimit + WebImage.Width)) //hovering over answer key
+                if (pt.X >= rightLimit && pt.X <= (leftLimit + WebImage.Width + 140)) //hovering over answer key
                 {
                     Canvas.SetLeft(AnswerEllipse, rightLimit + 40);
                     AnswerEllipse.Visibility = Visibility.Visible;
-                    double top = 120; // 400 - (WebImage.Height/2) + 50;
-                    double interval = 80; //(WebImage.Height - 50)/7;
+                    double top = 192; // 400 - (WebImage.Height/2) + 50;
+                    double interval = 76; //(WebImage.Height - 50)/7;
                     if (pt.Y < top || pt.Y > top + 7 * interval)
                         AnswerEllipse.Visibility = Visibility.Hidden;
-                    else if (pt.Y >= top && pt.Y <= top+interval)
+                    else if (pt.Y >= top && pt.Y <= top + interval)
                         Canvas.SetTop(AnswerEllipse, top);
-                    else if (pt.Y <= top+2*interval)
-                        Canvas.SetTop(AnswerEllipse, top+interval);
-                    else if (pt.Y <= top+3*interval)
-                        Canvas.SetTop(AnswerEllipse, top+2*interval);
-                    else if (pt.Y <= top+4*interval)
-                        Canvas.SetTop(AnswerEllipse, top+3*interval);
-                    else if (pt.Y <= top+5*interval)
-                        Canvas.SetTop(AnswerEllipse, top+4*interval);
-                    else if (pt.Y <= top+6*interval)
-                        Canvas.SetTop(AnswerEllipse, top+5*interval);
-                    else if (pt.Y <= top+7*interval)
-                        Canvas.SetTop(AnswerEllipse, top+6*interval);
+                    else if (pt.Y <= top + 2 * interval)
+                        Canvas.SetTop(AnswerEllipse, top + interval);
+                    else if (pt.Y <= top + 3 * interval)
+                        Canvas.SetTop(AnswerEllipse, top + 2 * interval);
+                    else if (pt.Y <= top + 4 * interval)
+                        Canvas.SetTop(AnswerEllipse, top + 3 * interval);
+                    else if (pt.Y <= top + 5 * interval)
+                        Canvas.SetTop(AnswerEllipse, top + 4 * interval);
+                    else if (pt.Y <= top + 6 * interval)
+                        Canvas.SetTop(AnswerEllipse, top + 5 * interval);
+                    else if (pt.Y <= top + 7 * interval)
+                        Canvas.SetTop(AnswerEllipse, top + 6 * interval);
                 }
                 #endregion
             }
-            else if (pt.X <= leftLimit + section) //far left
+            else if (pt.X <= leftLimit + wsection) //far left
             {
                 highlightColumn = 1;
             }
-            else if (pt.X <= leftLimit + 2*section) //left
+            else if (pt.X <= leftLimit + 2 * wsection) //left
             {
                 highlightColumn = 2;
             }
-            else if (pt.X <= leftLimit + 3*section) //right
+            else if (pt.X <= leftLimit + 3 * wsection) //right
             {
                 highlightColumn = 3;
-            } else if (pt.X <= rightLimit) //far right
+            }
+            else if (pt.X <= rightLimit) //far right
             {
                 highlightColumn = 4;
             };
-            #region columns12
+            #region columns14
             if (highlightColumn == 1 || highlightColumn == 4)
             {
                 /*
                 double bottomLimit = 400; // WebImage.Height / 2;
                 double topLimit = 760; // WebImage.Height - WebImage.Height / 5;
                 */
-                double topLimit = 0.363 * (WebImage.Width*0.77);
-                double bottomLimit = 0.787 * (WebImage.Width*0.77);
-                
+                double topLimit = 0.363 * WebImage.Width; // * w
+                double bottomLimit = 0.787 * WebImage.Width;
+
                 if (pt.Y >= topLimit && pt.Y <= bottomLimit)
                 {
                     if (highlightColumn == 4)
                     {
-                        if (caseNum==1)
+                        if (caseNum == 1)
                             WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/R3graphic1.png", UriKind.RelativeOrAbsolute));
-                        else if (caseNum==2)
+                        else if (caseNum == 2)
                             WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/R3graphic2.png", UriKind.RelativeOrAbsolute));
                         else if (caseNum == 3)
                             WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/R3graphic3.png", UriKind.RelativeOrAbsolute));
@@ -491,8 +497,9 @@ namespace EyeTribeCSharp
             }
             #endregion
             #region column2
-            else if (highlightColumn == 2) {
-            if (pt.Y <= section)
+            else if (highlightColumn == 2)
+            {
+                if (pt.Y <= pad + section)
                 {
                     if (caseNum == 1)
                         WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/L1graphic1.png", UriKind.RelativeOrAbsolute));
@@ -501,7 +508,7 @@ namespace EyeTribeCSharp
                     else if (caseNum == 3)
                         WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/L1graphic3.png", UriKind.RelativeOrAbsolute));
                 }
-                else if (pt.Y <= 2 * section)
+                else if (pt.Y <= pad + 2 * section)
                 {
                     if (caseNum == 1)
                         WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/L2graphic1.png", UriKind.RelativeOrAbsolute));
@@ -510,7 +517,7 @@ namespace EyeTribeCSharp
                     else if (caseNum == 3)
                         WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/L2graphic3.png", UriKind.RelativeOrAbsolute));
                 }
-                else if (pt.Y >= 3 * section)
+                else if (pt.Y >= pad + 3 * section)
                 {
                     if (caseNum == 1)
                         WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/L4graphic1.png", UriKind.RelativeOrAbsolute));
@@ -533,7 +540,7 @@ namespace EyeTribeCSharp
             #region column3
             else if (highlightColumn == 3)
             {
-                if (pt.Y <= section)
+                if (pt.Y <= pad + section)
                 {
                     if (caseNum == 1)
                         WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/R1graphic1.png", UriKind.RelativeOrAbsolute));
@@ -542,7 +549,7 @@ namespace EyeTribeCSharp
                     else if (caseNum == 3)
                         WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/R1graphic3.png", UriKind.RelativeOrAbsolute));
                 }
-                else if (pt.Y <= 2 * section)
+                else if (pt.Y <= pad + 2 * section)
                 {
                     if (caseNum == 1)
                         WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/R2graphic1.png", UriKind.RelativeOrAbsolute));
@@ -551,7 +558,7 @@ namespace EyeTribeCSharp
                     else if (caseNum == 3)
                         WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/R2graphic3.png", UriKind.RelativeOrAbsolute));
                 }
-                else if (pt.Y >= 3 * section)
+                else if (pt.Y >= pad + 3 * section)
                 {
                     if (caseNum == 1)
                         WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/R4graphic1.png", UriKind.RelativeOrAbsolute));
@@ -639,7 +646,8 @@ namespace EyeTribeCSharp
                         SpotLine.Visibility = Visibility.Visible;
                         SpotLine.X2 = lastMarkPoint.X;
                         SpotLine.Y2 = lastMarkPoint.Y;
-                    } else
+                    }
+                    else
                     {
                         SpotLine.X1 = lastMarkPoint.X;
                         SpotLine.Y1 = lastMarkPoint.Y;
@@ -665,7 +673,7 @@ namespace EyeTribeCSharp
                 spotWidth = 8;
                 spotHeight = 8;
                 markPoint = pt;
-                
+
                 //update range
                 range[0] = markPoint.X - 90;
                 range[1] = markPoint.X + 90;
@@ -673,7 +681,7 @@ namespace EyeTribeCSharp
                 range[3] = markPoint.Y + 90;
             }
         }
-       
+
         private void drawTrack(Point pt)
         {
             //var x = (int)Math.Round(pt.X, 0);
@@ -736,7 +744,7 @@ namespace EyeTribeCSharp
             foreach (var child in GridButtons.Children.Cast<ImageButton>())
             {
                 var isChecked = MouseHitTest(child, pt);
-               // var isChecked = HitTest(child, pt);
+                // var isChecked = HitTest(child, pt);
                 child.IsChecked = isChecked;
                 if (!isChecked) continue;
                 foundCandidate = true;
@@ -817,9 +825,12 @@ namespace EyeTribeCSharp
                     if (SenderOn)
                     {
                         Share_Text.Text = "Share On";
-                        if (defaultSenderIP != "") {
+                        if (defaultSenderIP != "")
+                        {
                             SenderIP = defaultSenderIP;
-                        } else {
+                        }
+                        else
+                        {
                             Sender_Pop.IsOpen = true;
                             Sender_Pop_TextBox.Text = "Please enter other's IP address";
                             Sender_Pop_TextBox.SelectAll();
@@ -862,7 +873,8 @@ namespace EyeTribeCSharp
                         if (caseNum == 1)
                         {
                             WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/graphic1.png", UriKind.RelativeOrAbsolute));
-                        } else if (caseNum ==2)
+                        }
+                        else if (caseNum == 2)
                         {
                             WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/graphic2.png", UriKind.RelativeOrAbsolute));
                         }
@@ -1042,7 +1054,7 @@ namespace EyeTribeCSharp
 
         #endregion
         #region Native methods
-       
+
         public static Point GetSystemDpi()
         {
             Point result = new Point();
