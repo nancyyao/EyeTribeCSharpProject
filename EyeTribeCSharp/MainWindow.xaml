@@ -123,7 +123,7 @@
             <TextBlock DockPanel.Dock="Bottom" Name="Share_Status_Text" MaxWidth="266.67" Text="Sharing Data" FontSize="18" HorizontalAlignment="Center" Visibility="Hidden"/>
         </DockPanel>
         <Canvas x:Name="canvas_overlay">
-            <Ellipse x:Name="GazePointer" Width="32" Height="32" Visibility="Visible" >
+            <Ellipse x:Name="GazePointer" Width="32" Height="32" Visibility="Hidden" >
                 <Ellipse.Fill><ImageBrush ImageSource="Graphics\eye-7-32.png"/></Ellipse.Fill>
             </Ellipse>
             <Ellipse x:Name="ReceiveGazePointer" Width="32" Height="32" Visibility="Hidden" >

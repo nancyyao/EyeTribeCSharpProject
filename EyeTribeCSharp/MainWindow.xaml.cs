@@ -97,8 +97,8 @@ namespace EyeTribeCSharp
         private System.Threading.Thread communicateThread_Receiver; //Thread for receiver
         private System.Threading.Thread communicateThread_Sender;   //Thread for sender
         private static string SenderIP = "", ReceiverIP = ""; //The IP's for sender and receiver.
-        private static string defaultSenderIP = "169.254.41.115"; //The default IP for sending messages.
-                                                                  //SenderIP = "169.254.251.137"; //seahorse laptop.//SenderIP = "169.254.41.115"; //Jellyfish laptop
+        private static string defaultSenderIP = "169.254.50.139"; //The default IP for sending messages.
+                                                                  //SenderIP = "169.254.50.139"; //seahorse laptop.//SenderIP = "169.254.41.115"; //Jellyfish laptop
         private static int x_received, y_received;
 
         private static string IPpat = @"(\d+)(\.)(\d+)(\.)(\d+)(\.)(\d+)\s+"; // regular expression used for matching ip address
@@ -346,11 +346,15 @@ namespace EyeTribeCSharp
         }
         private void UpdateUI(int x, int y)
         {
+            // Unhide the GazePointer if you want to see your gaze point
+            //GazePointer.Visibility = Visibility.Visible;
+
             var relativePt = new Point(x, y);
             relativePt = transfrm.Transform(relativePt);
             if (!ReceiverOn)
             {
-                if (Math.Sqrt((relativePt.X - lastPointUpdate.X) * (relativePt.X - lastPointUpdate.X) + (relativePt.Y - lastPointUpdate.Y) * (relativePt.Y - lastPointUpdate.Y)) > 3)
+                if ((GazePointer.Visibility == Visibility.Visible) &&
+                    (Math.Sqrt((relativePt.X - lastPointUpdate.X) * (relativePt.X - lastPointUpdate.X) + (relativePt.Y - lastPointUpdate.Y) * (relativePt.Y - lastPointUpdate.Y)) > 3))
                 {
                     Canvas.SetLeft(GazePointer, relativePt.X - GazePointer.Width / 2);
                     Canvas.SetTop(GazePointer, relativePt.Y - GazePointer.Height / 2);
@@ -626,7 +630,7 @@ namespace EyeTribeCSharp
             if (pt.X >= range[0] && pt.X <= range[1] && pt.Y >= range[2] && pt.Y <= range[3]) //in RANGE
             {
                 gazeTime += 1;
-                if (gazeTime > 12)
+                if (gazeTime > 6)
                 {
                     if (spotWidth <= 70 && spotHeight <= 70)
                     {
@@ -675,10 +679,10 @@ namespace EyeTribeCSharp
                 markPoint = pt;
 
                 //update range
-                range[0] = markPoint.X - 90;
-                range[1] = markPoint.X + 90;
-                range[2] = markPoint.Y - 90;
-                range[3] = markPoint.Y + 90;
+                range[0] = markPoint.X - 60;
+                range[1] = markPoint.X + 60;
+                range[2] = markPoint.Y - 60;
+                range[3] = markPoint.Y + 60;
             }
         }
 
@@ -789,8 +793,10 @@ namespace EyeTribeCSharp
                     ReceiverOn = !ReceiverOn;
                     if (ReceiverOn)
                     {
+                        /*
                         GazePointer.Visibility = Visibility.Hidden;
                         ReceiveGazePointer.Visibility = Visibility.Visible;
+                        */
                         IPHostEntry ipHostInfo = Dns.GetHostByName(Dns.GetHostName());
                         IPAddress ipAddress = ipHostInfo.AddressList[0];
                         Receive_Text.Text = "Receiver On\nIP:" + ipAddress.ToString();
@@ -802,8 +808,10 @@ namespace EyeTribeCSharp
                     }
                     else
                     {
+                        /*
                         GazePointer.Visibility = Visibility.Visible;
                         ReceiveGazePointer.Visibility = Visibility.Hidden;
+                        */
                         Receive_Text.Text = "Receive Off";
                         Receive_Status_Text.Visibility = Visibility.Hidden;
                         //if wrap below???
@@ -1006,22 +1014,21 @@ namespace EyeTribeCSharp
         }
         private void receiveGaze(int x, int y)
         {
-            if (ReceiveGazePointer.Visibility == Visibility.Visible)
+            var relativePt = new Point(x, y);
+            relativePt = transfrm.Transform(relativePt);
+            if ((ReceiveGazePointer.Visibility == Visibility.Visible) &&
+                (Math.Sqrt((relativePt.X - lastPointUpdate.X) * (relativePt.X - lastPointUpdate.X) + (relativePt.Y - lastPointUpdate.Y) * (relativePt.Y - lastPointUpdate.Y)) > 3))
             {
-                var relativePt = new Point(x, y);
-                relativePt = transfrm.Transform(relativePt);
-                if (Math.Sqrt((relativePt.X - lastPointUpdate.X) * (relativePt.X - lastPointUpdate.X) + (relativePt.Y - lastPointUpdate.Y) * (relativePt.Y - lastPointUpdate.Y)) > 3)
-                {
-                    Canvas.SetLeft(ReceiveGazePointer, relativePt.X - ReceiveGazePointer.Width / 2);
-                    Canvas.SetTop(ReceiveGazePointer, relativePt.Y - ReceiveGazePointer.Height / 2);
-                    Console.Write(relativePt.X);
-                }
-                lastPointUpdate = relativePt;
-
-                //send to textbox the coordinates in real time and the recording status
-
+                Canvas.SetLeft(ReceiveGazePointer, relativePt.X - ReceiveGazePointer.Width / 2);
+                Canvas.SetTop(ReceiveGazePointer, relativePt.Y - ReceiveGazePointer.Height / 2);
+                Console.Write(relativePt.X);
             }
-            else { TestBox.Text = "Receiver's side Not Visible"; }
+            else
+            {
+                TestBox.Text = "Receiver's side Not Visible";
+            }
+            lastPointUpdate = relativePt;
+            //send to textbox the coordinates in real time and the recording status
         }
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
