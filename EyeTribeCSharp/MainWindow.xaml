@@ -57,12 +57,62 @@
             </LinearGradientBrush.GradientStops>
         </LinearGradientBrush>
         <SolidColorBrush x:Key="semitransbrush" Color="#80f2f264"></SolidColorBrush>
-        
     </Window.Resources>
+    
+    
     <Grid x:Name="LayoutRoot">
         <ScrollViewer x:Name="WebImageScroll" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" HorizontalAlignment="Center">
             <Image x:Name="WebImage" />
         </ScrollViewer>
+        <StackPanel x:Name="mainimage" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Image x:Name="lefthemifield" Source="Graphics/newgraphics/lefthemifield.png" Width="140" Stretch="Uniform">
+                        <Image.Effect>
+                            <DropShadowEffect Direction="225" Color="#FFB6C2CB" ShadowDepth="5" BlurRadius="10" />
+                        </Image.Effect>
+                    </Image>
+                    <Image x:Name="righthemifield" Source="Graphics/newgraphics/righthemifield.png" Width="138" Stretch="Uniform">
+                        <Image.Effect>
+                            <DropShadowEffect Direction="225" Color="#FFB6C2CB" ShadowDepth="5" BlurRadius="10" />
+                        </Image.Effect>
+                    </Image>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image x:Name="leftoptictract" Source="Graphics/newgraphics/leftoptictract.png" Width="140" Stretch="Uniform">
+                        <Image.Effect>
+                            <DropShadowEffect Direction="225" Color="#FFB6C2CB" ShadowDepth="5" BlurRadius="10" />
+                        </Image.Effect>
+                    </Image>
+                    <Image x:Name="rightoptictract" Source="Graphics/newgraphics/rightoptictract.png" Width="115" Stretch="Uniform">
+                        <Image.Effect>
+                            <DropShadowEffect Direction="225" Color="#FFB6C2CB" ShadowDepth="5" BlurRadius="10" />
+                        </Image.Effect>
+                    </Image>
+                </StackPanel>
+                <Rectangle x:Name="filler" Height="46" Fill="Transparent"></Rectangle>
+                <StackPanel Orientation="Horizontal">
+                    <Image x:Name="leftvisualcortex" Source="Graphics/newgraphics/leftvisualcortex.png" Width="140" Stretch="Uniform">
+                        <Image.Effect>
+                            <DropShadowEffect Direction="225" Color="#FFB6C2CB" ShadowDepth="5" BlurRadius="10" />
+                        </Image.Effect>
+                    </Image>
+                    <Image x:Name="rightvisualcortex" Source="Graphics/newgraphics/rightvisualcortex.png" Width="109" Stretch="Uniform">
+                        <Image.Effect>
+                            <DropShadowEffect Direction="225" Color="#FFB6C2CB" ShadowDepth="5" BlurRadius="10" />
+                        </Image.Effect>
+                    </Image>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <Rectangle Height="100" Fill="Transparent"></Rectangle>
+                <Image x:Name="opticradiations" Source="Graphics/newgraphics/opticradiations.png" Width="138" Stretch="Uniform">
+                    <Image.Effect>
+                        <DropShadowEffect Direction="225" Color="#FFB6C2CB" ShadowDepth="5" BlurRadius="10" />
+                    </Image.Effect>
+                </Image>
+            </StackPanel>
+        </StackPanel>
         <Grid x:Name="GridTop" Margin="0" VerticalAlignment="Top" Height="250">
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*" />
@@ -136,9 +186,7 @@
             <Ellipse x:Name="PrevGazeSpot" Width="8" Height="8" Fill="Red" Visibility="Hidden" Opacity="0.4"/>
             <Line x:Name="SpotLine" Stroke="red" X1="0" Y1="25" X2="0" Y2="25" Visibility="Hidden"/>
         </Canvas>
-        <Canvas x:Name="fish_overlay" Opacity="1">
-            <Ellipse x:Name="FishCircle" Width="300" Height="200" Stroke="Blue" Visibility="Hidden"/>
-        </Canvas>
         <TextBox x:Name="TestBox" Opacity="0.0" FontSize="24" Margin="10,250,-10,341" TextWrapping="Wrap" Text="Starting. Please make sure Eye Tracker is calibrated and your eyes are on the screen!"/>
     </Grid>
 </Window>
+    

@@ -347,7 +347,7 @@ namespace EyeTribeCSharp
         private void UpdateUI(int x, int y)
         {
             // Unhide the GazePointer if you want to see your gaze point
-            //GazePointer.Visibility = Visibility.Visible;
+           // GazePointer.Visibility = Visibility.Visible;
 
             var relativePt = new Point(x, y);
             relativePt = transfrm.Transform(relativePt);
@@ -583,47 +583,7 @@ namespace EyeTribeCSharp
                 #endregion
             };
         }
-        //private void fishCheckRegion(Point pt)
-        //{
-        //    w = fish_overlay.ActualWidth / 4;
-        //    h = fish_overlay.ActualHeight / 4;
-
-        //    //check if NOT in previous region
-        //    if (!(pt.X >= pastCol * w && pt.X <= (pastCol + 1) * w && pt.Y >= pastRow * h && pt.Y <= (1 + pastRow) * h))
-        //    {
-        //        //check range for rows (h)
-        //        for (int i = 0; i < 4; i++)
-        //        {
-        //            if ((pt.Y >= i * h) && (pt.Y <= (i + 1) * h))
-        //            {
-        //                //check range for columns (w)
-        //                for (int j = 0; j < 4; j++)
-        //                {
-        //                    if ((pt.X >= j * w) && (pt.X <= (j + 1) * w))
-        //                    {
-        //                        pastRow = i;
-        //                        pastCol = j;
-        //                        if (pastCol == 0)
-        //                        {
-        //                            SolidColorBrush strokeBrush = new SolidColorBrush(Color.FromRgb(255, 0, 0));
-        //                            FishCircle.Stroke = strokeBrush;
-        //                        }
-        //                        else
-        //                        {
-        //                            SolidColorBrush strokeBrush2 = new SolidColorBrush(Color.FromRgb(0, 0, 255));
-        //                            FishCircle.Stroke = strokeBrush2;
-        //                        }
-        //                        Canvas.SetLeft(FishCircle, pastCol * w);
-        //                        Canvas.SetTop(FishCircle, pastRow * h);
-        //                        FishCircle.Visibility = Visibility.Visible;
-        //                        return;
-        //                    }
-        //                }
-        //                return;
-        //            }
-        //        }
-        //    }
-        //}
+        
         private void spot(Point pt)
         {
             //highlight focus spots in track
@@ -793,10 +753,10 @@ namespace EyeTribeCSharp
                     ReceiverOn = !ReceiverOn;
                     if (ReceiverOn)
                     {
-                        /*
-                        GazePointer.Visibility = Visibility.Hidden;
-                        ReceiveGazePointer.Visibility = Visibility.Visible;
-                        */
+                        
+                       // GazePointer.Visibility = Visibility.Hidden;
+                       // ReceiveGazePointer.Visibility = Visibility.Visible;
+                        
                         IPHostEntry ipHostInfo = Dns.GetHostByName(Dns.GetHostName());
                         IPAddress ipAddress = ipHostInfo.AddressList[0];
                         Receive_Text.Text = "Receiver On\nIP:" + ipAddress.ToString();
@@ -808,10 +768,10 @@ namespace EyeTribeCSharp
                     }
                     else
                     {
-                        /*
-                        GazePointer.Visibility = Visibility.Visible;
-                        ReceiveGazePointer.Visibility = Visibility.Hidden;
-                        */
+                        
+                      //  GazePointer.Visibility = Visibility.Visible;
+                      //  ReceiveGazePointer.Visibility = Visibility.Hidden;
+                        
                         Receive_Text.Text = "Receive Off";
                         Receive_Status_Text.Visibility = Visibility.Hidden;
                         //if wrap below???

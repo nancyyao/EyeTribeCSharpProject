@@ -323,9 +323,59 @@ namespace EyeTribeCSharp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap lefthemifield {
+            get {
+                object obj = ResourceManager.GetObject("lefthemifield", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap leftoptictract {
+            get {
+                object obj = ResourceManager.GetObject("leftoptictract", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap leftvisualcortex {
+            get {
+                object obj = ResourceManager.GetObject("leftvisualcortex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lesionstransparent1 {
+            get {
+                object obj = ResourceManager.GetObject("lesionstransparent1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap microphone_3_96 {
             get {
                 object obj = ResourceManager.GetObject("microphone_3_96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap opticradiations {
+            get {
+                object obj = ResourceManager.GetObject("opticradiations", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -456,6 +506,46 @@ namespace EyeTribeCSharp.Properties {
         internal static System.Drawing.Bitmap R4graphic3 {
             get {
                 object obj = ResourceManager.GetObject("R4graphic3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap righthemifield {
+            get {
+                object obj = ResourceManager.GetObject("righthemifield", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rightoptictract {
+            get {
+                object obj = ResourceManager.GetObject("rightoptictract", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rightvisualcortex {
+            get {
+                object obj = ResourceManager.GetObject("rightvisualcortex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap squarelesions1 {
+            get {
+                object obj = ResourceManager.GetObject("squarelesions1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
