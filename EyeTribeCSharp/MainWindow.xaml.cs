@@ -185,11 +185,12 @@ namespace EyeTribeCSharp
                 else
                     WebImage.Width = Screen.PrimaryScreen.Bounds.Width * dpiScale;
 
-                // Transformation matrix that accomodate for the DPI settings
+                //  Transformation matrix that accomodate for the DPI settings
+
                 var presentationSource = PresentationSource.FromVisual(this);
                 transfrm = presentationSource.CompositionTarget.TransformFromDevice;
 
-                WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/graphic1.png", UriKind.RelativeOrAbsolute));
+                //WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/graphic1.png", UriKind.RelativeOrAbsolute));
             };
 
             //file header?
@@ -257,26 +258,26 @@ namespace EyeTribeCSharp
             if (e.KeyboardDevice.IsKeyDown(Key.A))
             {
                 caseNum = 1;
-                if (highlightOn)
-                    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/BWgraphic1.png", UriKind.RelativeOrAbsolute));
-                else
-                    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/graphic1.png", UriKind.RelativeOrAbsolute));
+                //if (highlightOn)
+                //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/BWgraphic1.png", UriKind.RelativeOrAbsolute));
+                //else
+                //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/graphic1.png", UriKind.RelativeOrAbsolute));
             }
             else if (e.KeyboardDevice.IsKeyDown(Key.B))
             {
                 caseNum = 2;
-                if (highlightOn)
-                    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/BWgraphic2.png", UriKind.RelativeOrAbsolute));
-                else
-                    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/graphic2.png", UriKind.RelativeOrAbsolute));
+                //if (highlightOn)
+                //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/BWgraphic2.png", UriKind.RelativeOrAbsolute));
+                //else
+                //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/graphic2.png", UriKind.RelativeOrAbsolute));
             }
             else if (e.KeyboardDevice.IsKeyDown(Key.C))
             {
                 caseNum = 3;
-                if (highlightOn)
-                    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/BWgraphic3.png", UriKind.RelativeOrAbsolute));
-                else
-                    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/graphic3.png", UriKind.RelativeOrAbsolute));
+                //if (highlightOn)
+                //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/BWgraphic3.png", UriKind.RelativeOrAbsolute));
+                //else
+                //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/graphic3.png", UriKind.RelativeOrAbsolute));
             }
             else
             {
@@ -347,7 +348,7 @@ namespace EyeTribeCSharp
         private void UpdateUI(int x, int y)
         {
             // Unhide the GazePointer if you want to see your gaze point
-           // GazePointer.Visibility = Visibility.Visible;
+            // GazePointer.Visibility = Visibility.Visible;
 
             var relativePt = new Point(x, y);
             relativePt = transfrm.Transform(relativePt);
@@ -359,6 +360,10 @@ namespace EyeTribeCSharp
                     Canvas.SetLeft(GazePointer, relativePt.X - GazePointer.Width / 2);
                     Canvas.SetTop(GazePointer, relativePt.Y - GazePointer.Height / 2);
                     Console.Write(relativePt.X);
+
+                    // Image foundImages = VisualTreeHelper.HitTest(lefthemifield, relativePt);
+                    pointImageCheck(relativePt);
+                    // IEnumerable<UIElement> VisualTreeHelper.FindElementsInHostCoordinates(Point intersectingPoint, UIElement subtree)
                 }
                 lastPointUpdate = relativePt;
 
@@ -403,6 +408,34 @@ namespace EyeTribeCSharp
                 //DoButtonCheck(x, y);
             }
         }
+        private void pointImageCheck(Point position)
+        {
+            VisualTreeHelper.HitTest(lefthemifield, null, new HitTestResultCallback(HitTestResultHandler),
+                    new PointHitTestParameters(position)
+            );
+        }
+        public HitTestResultBehavior HitTestResultHandler(HitTestResult result)
+        {
+            PointHitTestResult hitResult = (PointHitTestResult)result;
+            Console.WriteLine(((FrameworkElement)hitResult.VisualHit).Name);
+            Console.WriteLine(hitResult.PointHit.ToString());
+            return HitTestResultBehavior.Continue;
+
+            //IntersectionDetail idDetail = ((GeometryHitTestResult)htrResult).IntersectionDetail;
+            //switch (idDetail)
+            //{
+            //    case IntersectionDetail.FullyContains:
+            //        m_lstHitList.Add((Rectangle)htrResult.VisualHit);
+            //        return HitTestResultBehavior.Continue;
+            //    case IntersectionDetail.Intersects:
+            //        return HitTestResultBehavior.Continue;
+            //    case IntersectionDetail.FullyInside:
+            //        return HitTestResultBehavior.Continue;
+            //    default:
+            //        return HitTestResultBehavior.Stop;
+            //}
+        }
+
         private void checkRegion(Point pt)
         {
             h = WebImage.Height;
@@ -419,12 +452,12 @@ namespace EyeTribeCSharp
             if (pt.X >= rightLimit || pt.X <= leftLimit) //no region
             {
                 highlightColumn = 0;
-                if (caseNum == 1)
-                    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/BWgraphic1.png", UriKind.RelativeOrAbsolute));
-                else if (caseNum == 2)
-                    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/BWgraphic2.png", UriKind.RelativeOrAbsolute));
-                else if (caseNum == 3)
-                    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/BWgraphic3.png", UriKind.RelativeOrAbsolute));
+                //if (caseNum == 1)
+                //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/BWgraphic1.png", UriKind.RelativeOrAbsolute));
+                //else if (caseNum == 2)
+                //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/BWgraphic2.png", UriKind.RelativeOrAbsolute));
+                //else if (caseNum == 3)
+                //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/BWgraphic3.png", UriKind.RelativeOrAbsolute));
                 #region answerkey
                 if (pt.X >= rightLimit && pt.X <= (leftLimit + WebImage.Width + 140)) //hovering over answer key
                 {
@@ -467,123 +500,125 @@ namespace EyeTribeCSharp
             {
                 highlightColumn = 4;
             };
-            #region columns14
-            if (highlightColumn == 1 || highlightColumn == 4)
-            {
-                /*
-                double bottomLimit = 400; // WebImage.Height / 2;
-                double topLimit = 760; // WebImage.Height - WebImage.Height / 5;
-                */
-                double topLimit = 0.363 * WebImage.Width; // * w
-                double bottomLimit = 0.787 * WebImage.Width;
+            #region highlightdealingwithcolumns
+            //#region columns14
+            //if (highlightColumn == 1 || highlightColumn == 4)
+            //{
+            //    /*
+            //    double bottomLimit = 400; // WebImage.Height / 2;
+            //    double topLimit = 760; // WebImage.Height - WebImage.Height / 5;
+            //    */
+            //    double topLimit = 0.363 * WebImage.Width; // * w
+            //    double bottomLimit = 0.787 * WebImage.Width;
 
-                if (pt.Y >= topLimit && pt.Y <= bottomLimit)
-                {
-                    if (highlightColumn == 4)
-                    {
-                        if (caseNum == 1)
-                            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/R3graphic1.png", UriKind.RelativeOrAbsolute));
-                        else if (caseNum == 2)
-                            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/R3graphic2.png", UriKind.RelativeOrAbsolute));
-                        else if (caseNum == 3)
-                            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/R3graphic3.png", UriKind.RelativeOrAbsolute));
-                    }
-                    else
-                    {
-                        if (caseNum == 1)
-                            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/L3graphic1.png", UriKind.RelativeOrAbsolute));
-                        else if (caseNum == 2)
-                            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/L3graphic2.png", UriKind.RelativeOrAbsolute));
-                        else if (caseNum == 3)
-                            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/L3graphic3.png", UriKind.RelativeOrAbsolute));
-                    }
-                }
-            }
+            //    if (pt.Y >= topLimit && pt.Y <= bottomLimit)
+            //    {
+            //        if (highlightColumn == 4)
+            //        {
+            //            if (caseNum == 1)
+            //                WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/R3graphic1.png", UriKind.RelativeOrAbsolute));
+            //            else if (caseNum == 2)
+            //                WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/R3graphic2.png", UriKind.RelativeOrAbsolute));
+            //            else if (caseNum == 3)
+            //                WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/R3graphic3.png", UriKind.RelativeOrAbsolute));
+            //        }
+            //        else
+            //        {
+            //            if (caseNum == 1)
+            //                WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/L3graphic1.png", UriKind.RelativeOrAbsolute));
+            //            else if (caseNum == 2)
+            //                WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/L3graphic2.png", UriKind.RelativeOrAbsolute));
+            //            else if (caseNum == 3)
+            //                WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/L3graphic3.png", UriKind.RelativeOrAbsolute));
+            //        }
+            //    }
+            //}
+            //#endregion
+            //#region column2
+            //else if (highlightColumn == 2)
+            //{
+            //    if (pt.Y <= pad + section)
+            //    {
+            //        if (caseNum == 1)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/L1graphic1.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 2)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/L1graphic2.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 3)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/L1graphic3.png", UriKind.RelativeOrAbsolute));
+            //    }
+            //    else if (pt.Y <= pad + 2 * section)
+            //    {
+            //        if (caseNum == 1)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/L2graphic1.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 2)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/L2graphic2.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 3)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/L2graphic3.png", UriKind.RelativeOrAbsolute));
+            //    }
+            //    else if (pt.Y >= pad + 3 * section)
+            //    {
+            //        if (caseNum == 1)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/L4graphic1.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 2)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/L4graphic2.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 3)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/L4graphic3.png", UriKind.RelativeOrAbsolute));
+            //    }
+            //    else
+            //    {
+            //        if (caseNum == 1)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/BWgraphic1.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 2)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/BWgraphic2.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 3)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/BWgraphic3.png", UriKind.RelativeOrAbsolute));
+            //    }
+            //    #endregion
+            //}
+            //#region column3
+            //else if (highlightColumn == 3)
+            //{
+            //    if (pt.Y <= pad + section)
+            //    {
+            //        if (caseNum == 1)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/R1graphic1.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 2)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/R1graphic2.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 3)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/R1graphic3.png", UriKind.RelativeOrAbsolute));
+            //    }
+            //    else if (pt.Y <= pad + 2 * section)
+            //    {
+            //        if (caseNum == 1)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/R2graphic1.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 2)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/R2graphic2.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 3)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/R2graphic3.png", UriKind.RelativeOrAbsolute));
+            //    }
+            //    else if (pt.Y >= pad + 3 * section)
+            //    {
+            //        if (caseNum == 1)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/R4graphic1.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 2)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/R4graphic2.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 3)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/R4graphic3.png", UriKind.RelativeOrAbsolute));
+            //    }
+            //    else
+            //    {
+            //        if (caseNum == 1)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/BWgraphic1.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 2)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/BWgraphic2.png", UriKind.RelativeOrAbsolute));
+            //        else if (caseNum == 3)
+            //            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/BWgraphic3.png", UriKind.RelativeOrAbsolute));
+            //    }
+            //    #endregion
+            //};
             #endregion
-            #region column2
-            else if (highlightColumn == 2)
-            {
-                if (pt.Y <= pad + section)
-                {
-                    if (caseNum == 1)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/L1graphic1.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 2)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/L1graphic2.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 3)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/L1graphic3.png", UriKind.RelativeOrAbsolute));
-                }
-                else if (pt.Y <= pad + 2 * section)
-                {
-                    if (caseNum == 1)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/L2graphic1.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 2)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/L2graphic2.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 3)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/L2graphic3.png", UriKind.RelativeOrAbsolute));
-                }
-                else if (pt.Y >= pad + 3 * section)
-                {
-                    if (caseNum == 1)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/L4graphic1.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 2)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/L4graphic2.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 3)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/L4graphic3.png", UriKind.RelativeOrAbsolute));
-                }
-                else
-                {
-                    if (caseNum == 1)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/BWgraphic1.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 2)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/BWgraphic2.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 3)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/BWgraphic3.png", UriKind.RelativeOrAbsolute));
-                }
-                #endregion
-            }
-            #region column3
-            else if (highlightColumn == 3)
-            {
-                if (pt.Y <= pad + section)
-                {
-                    if (caseNum == 1)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/R1graphic1.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 2)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/R1graphic2.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 3)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/R1graphic3.png", UriKind.RelativeOrAbsolute));
-                }
-                else if (pt.Y <= pad + 2 * section)
-                {
-                    if (caseNum == 1)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/R2graphic1.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 2)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/R2graphic2.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 3)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/R2graphic3.png", UriKind.RelativeOrAbsolute));
-                }
-                else if (pt.Y >= pad + 3 * section)
-                {
-                    if (caseNum == 1)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/R4graphic1.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 2)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/R4graphic2.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 3)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/R4graphic3.png", UriKind.RelativeOrAbsolute));
-                }
-                else
-                {
-                    if (caseNum == 1)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/BWgraphic1.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 2)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/BWgraphic2.png", UriKind.RelativeOrAbsolute));
-                    else if (caseNum == 3)
-                        WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/BWgraphic3.png", UriKind.RelativeOrAbsolute));
-                }
-                #endregion
-            };
         }
-        
+
         private void spot(Point pt)
         {
             //highlight focus spots in track
@@ -753,10 +788,10 @@ namespace EyeTribeCSharp
                     ReceiverOn = !ReceiverOn;
                     if (ReceiverOn)
                     {
-                        
-                       // GazePointer.Visibility = Visibility.Hidden;
-                       // ReceiveGazePointer.Visibility = Visibility.Visible;
-                        
+
+                        // GazePointer.Visibility = Visibility.Hidden;
+                        // ReceiveGazePointer.Visibility = Visibility.Visible;
+
                         IPHostEntry ipHostInfo = Dns.GetHostByName(Dns.GetHostName());
                         IPAddress ipAddress = ipHostInfo.AddressList[0];
                         Receive_Text.Text = "Receiver On\nIP:" + ipAddress.ToString();
@@ -768,10 +803,10 @@ namespace EyeTribeCSharp
                     }
                     else
                     {
-                        
-                      //  GazePointer.Visibility = Visibility.Visible;
-                      //  ReceiveGazePointer.Visibility = Visibility.Hidden;
-                        
+
+                        //  GazePointer.Visibility = Visibility.Visible;
+                        //  ReceiveGazePointer.Visibility = Visibility.Hidden;
+
                         Receive_Text.Text = "Receive Off";
                         Receive_Status_Text.Visibility = Visibility.Hidden;
                         //if wrap below???
@@ -838,18 +873,18 @@ namespace EyeTribeCSharp
                     if (trackOn)
                     {
                         Track_Text.Text = "Track On";
-                        if (caseNum == 1)
-                        {
-                            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/graphic1.png", UriKind.RelativeOrAbsolute));
-                        }
-                        else if (caseNum == 2)
-                        {
-                            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/graphic2.png", UriKind.RelativeOrAbsolute));
-                        }
-                        else if (caseNum == 3)
-                        {
-                            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/graphic3.png", UriKind.RelativeOrAbsolute));
-                        }
+                        //if (caseNum == 1)
+                        //{
+                        //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/graphic1.png", UriKind.RelativeOrAbsolute));
+                        //}
+                        //else if (caseNum == 2)
+                        //{
+                        //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/graphic2.png", UriKind.RelativeOrAbsolute));
+                        //}
+                        //else if (caseNum == 3)
+                        //{
+                        //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/graphic3.png", UriKind.RelativeOrAbsolute));
+                        //}
                         firstSpotLine = false;
                         //also turn off highlight
                         if (highlightOn)
@@ -869,18 +904,18 @@ namespace EyeTribeCSharp
                     if (highlightOn)
                     {
                         Highlight_Text.Text = "Highlight ON";
-                        if (caseNum == 1)
-                        {
-                            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/BWgraphic1.png", UriKind.RelativeOrAbsolute));
-                        }
-                        else if (caseNum == 2)
-                        {
-                            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/BWgraphic2.png", UriKind.RelativeOrAbsolute));
-                        }
-                        else if (caseNum == 3)
-                        {
-                            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/BWgraphic3.png", UriKind.RelativeOrAbsolute));
-                        }
+                        //if (caseNum == 1)
+                        //{
+                        //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/BWgraphic1.png", UriKind.RelativeOrAbsolute));
+                        //}
+                        //else if (caseNum == 2)
+                        //{
+                        //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/BWgraphic2.png", UriKind.RelativeOrAbsolute));
+                        //}
+                        //else if (caseNum == 3)
+                        //{
+                        //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/BWgraphic3.png", UriKind.RelativeOrAbsolute));
+                        //}
                         //also turn off track
                         if (trackOn)
                         {
@@ -900,18 +935,18 @@ namespace EyeTribeCSharp
                     }
                     else
                     {
-                        if (caseNum == 1)
-                        {
-                            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/graphic1.png", UriKind.RelativeOrAbsolute));
-                        }
-                        else if (caseNum == 2)
-                        {
-                            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/graphic2.png", UriKind.RelativeOrAbsolute));
-                        }
-                        else if (caseNum == 3)
-                        {
-                            WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/graphic3.png", UriKind.RelativeOrAbsolute));
-                        }
+                        //if (caseNum == 1)
+                        //{
+                        //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseA/graphic1.png", UriKind.RelativeOrAbsolute));
+                        //}
+                        //else if (caseNum == 2)
+                        //{
+                        //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseB/graphic2.png", UriKind.RelativeOrAbsolute));
+                        //}
+                        //else if (caseNum == 3)
+                        //{
+                        //    WebImage.Source = new BitmapImage(new Uri("Graphics/CaseC/graphic3.png", UriKind.RelativeOrAbsolute));
+                        //}
                         Highlight_Text.Text = "Highlight Off";
                     }
                     break;

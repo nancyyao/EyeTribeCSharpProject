@@ -343,6 +343,16 @@ namespace EyeTribeCSharp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap leftoptictract1 {
+            get {
+                object obj = ResourceManager.GetObject("leftoptictract1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap leftvisualcortex {
             get {
                 object obj = ResourceManager.GetObject("leftvisualcortex", resourceCulture);
@@ -366,6 +376,16 @@ namespace EyeTribeCSharp.Properties {
         internal static System.Drawing.Bitmap microphone_3_96 {
             get {
                 object obj = ResourceManager.GetObject("microphone_3_96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap middleright {
+            get {
+                object obj = ResourceManager.GetObject("middleright", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -526,6 +546,16 @@ namespace EyeTribeCSharp.Properties {
         internal static System.Drawing.Bitmap rightoptictract {
             get {
                 object obj = ResourceManager.GetObject("rightoptictract", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rightoptictract1 {
+            get {
+                object obj = ResourceManager.GetObject("rightoptictract1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -175,38 +175,37 @@
     <Resource Include="Graphics\CaseC\R4graphic3.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Graphics\lesionstransparent.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Graphics\squarelesions.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="Graphics\newgraphics\lefthemifield.png" />
+    <Resource Include="Graphics\newgraphics\middleright.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Graphics\newgraphics\leftoptictract.png" />
+    <Resource Include="Graphics\newgraphics\lefthemifield.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Graphics\newgraphics\leftvisualcortex.png" />
+    <Resource Include="Graphics\newgraphics\leftoptictract.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Graphics\newgraphics\lesionstransparent.png" />
+    <Resource Include="Graphics\newgraphics\leftvisualcortex.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Graphics\newgraphics\opticradiations.png" />
+    <Resource Include="Graphics\newgraphics\lesionstransparent.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Graphics\newgraphics\righthemifield.png" />
+    <Resource Include="Graphics\newgraphics\opticradiations.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Graphics\newgraphics\rightoptictract.png" />
+    <Resource Include="Graphics\newgraphics\righthemifield.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Graphics\newgraphics\rightvisualcortex.png" />
+    <Resource Include="Graphics\newgraphics\rightoptictract.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Graphics\newgraphics\squarelesions.png" />
+    <Resource Include="Graphics\newgraphics\rightvisualcortex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Graphics\newgraphics\squarelesions.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
